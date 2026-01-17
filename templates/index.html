@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚡ PulsePoint AI</title>
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1/css/pico.min.css">
+    <style>
+        body { background: linear-gradient(135deg, #1a1a2e, #16213e); min-height: 100vh; }
+        .container { max-width: 1200px; padding: 2rem; }
+        h1 { 
+            font-size: 3rem; text-align: center;
+            background: linear-gradient(90deg, #8b5cf6, #ec4899);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .subtitle { text-align: center; color: #94a3b8; margin-bottom: 2rem; }
+        .upload-box {
+            border: 2px dashed #8b5cf6; border-radius: 1rem;
+            padding: 3rem; text-align: center;
+            background: rgba(139, 92, 246, 0.1); margin-bottom: 2rem;
+        }
+        .btn { 
+            background: linear-gradient(90deg, #8b5cf6, #ec4899) !important;
+            border: none !important; width: 100%; font-size: 1.2rem;
+        }
+        .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 2rem 0; text-align: center; }
+        .features span { font-size: 2rem; }
+        .reels-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+        .reel-card {
+            background: rgba(255,255,255,0.05); border-radius: 1rem;
+            padding: 1.5rem; border: 1px solid rgba(139, 92, 246, 0.3);
+        }
+        .reel-card h3 { color: #ec4899; margin: 0 0 0.5rem 0; }
+        .reel-card video { width: 100%; border-radius: 0.5rem; margin: 1rem 0; max-height: 400px; }
+        .score { 
+            background: linear-gradient(90deg, #8b5cf6, #ec4899);
+            padding: 0.2rem 0.6rem; border-radius: 1rem; font-size: 0.85rem;
+        }
+        .download-btn { 
+            display: block; text-align: center; padding: 0.75rem;
+            background: #8b5cf6; color: white; text-decoration: none;
+            border-radius: 0.5rem; margin-top: 0.5rem;
+        }
+        .download-btn:hover { background: #7c3aed; }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <h1>⚡ PulsePoint AI</h1>
+        <p class="subtitle">Transform Long Videos into Viral Vertical Reels | ByteSize Sage Hackathon</p>
+
+        <div class="features">
+            <div><span>🎵</span><p>Audio Peak Detection</p></div>
+            <div><span>🤖</span><p>AI Hook Generation</p></div>
+            <div><span>📱</span><p>Vertical 9:16 Crop</p></div>
+        </div>
+
+        {% if not done %}
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <div class="upload-box">
+                <h2>📤 Upload Your Video</h2>
+                <p>MP4, MOV • Lectures, Podcasts, Workshops</p>
+                <input type="file" name="video" accept=".mp4,.mov" required>
+            </div>
+            <button type="submit" class="btn">🚀 Analyze & Generate 5 Reels</button>
+        </form>
+        <p style="text-align:center; color:#666; margin-top:1rem;">⏱️ Processing takes 2-3 minutes for a 30min video</p>
+        {% endif %}
+
+        {% if done and reels %}
+        <h2 style="text-align:center; color:#8b5cf6; margin: 2rem 0;">🎬 Your {{reels|length}} Viral Reels Are Ready!</h2>
+        <div class="reels-grid">
+            {% for reel in reels %}
+            <div class="reel-card">
+                <h3>🎣 {{ reel.hook }}</h3>
+                <span class="score">⚡ {{ reel.score }}/10</span>
+                <p style="color:#888; margin:0.5rem 0;">⏱️ {{ reel.start }} → {{ reel.end }}</p>
+                <video controls>
+                    <source src="/static/reels/{{ reel.filename }}" type="video/mp4">
+                </video>
+                <a href="/static/reels/{{ reel.filename }}" download class="download-btn">⬇️ Download</a>
+            </div>
+            {% endfor %}
+        </div>
+        <form action="/" style="margin-top:2rem;">
+            <button type="submit" class="btn">🔄 Process Another Video</button>
+        </form>
+        {% endif %}
+    </main>
+</body>
+</html>
