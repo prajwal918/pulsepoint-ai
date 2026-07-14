@@ -1,6 +1,6 @@
 # pulsepoint-ai
 
-This repository is built with the **Monozukuri** philosophy, focusing on resilient architecture, graceful error handling, and robust continuous integration.
+This repository is built with strict enterprise engineering standards, focusing on resilient architecture, graceful error handling, and robust continuous integration.
 
 ## 🏗️ System Architecture
 
@@ -18,7 +18,33 @@ docker-compose up --build -d
 
 ## 📂 Structure
 
-Following Wabi-Sabi principles for a predictable layout.
+Following standard design patterns for a predictable layout.
+
+---
+
+## Original Readme
+
+# pulsepoint-ai
+
+This repository is built with strict enterprise engineering standards, focusing on resilient architecture, graceful error handling, and robust continuous integration.
+
+## 🏗️ System Architecture
+
+```mermaid
+graph TD
+    A[Client] --> B(Application Container)
+    B --> C{Core Logic}
+```
+
+## 🚀 Setup Instructions
+
+```bash
+docker-compose up --build -d
+```
+
+## 📂 Structure
+
+Following standard design patterns for a predictable layout.
 
 ---
 
