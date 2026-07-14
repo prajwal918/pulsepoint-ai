@@ -296,4 +296,11 @@ def main():
         os.startfile(output_dir)
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Exception as e:
+        print(f"❌ Critical Error: {e}")
+        import traceback
+        traceback.print_exc()
+        import sys
+        sys.exit(1)

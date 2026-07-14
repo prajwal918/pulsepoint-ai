@@ -110,8 +110,15 @@ def upload():
     return redirect('/')
 
 if __name__ == '__main__':
-    print("\n" + "="*50)
-    print("⚡ PULSEPOINT AI - Web Application")
-    print("="*50)
-    print("\n🌐 Open: http://127.0.0.1:5000\n")
-    app.run(debug=True, host='127.0.0.1', port=5000, threaded=True)
+    try:
+        print("\n" + "="*50)
+        print("⚡ PULSEPOINT AI - Web Application")
+        print("="*50)
+        print("\n🌐 Open: http://127.0.0.1:5000\n")
+        app.run(debug=True, host='127.0.0.1', port=5000, threaded=True)
+    except Exception as e:
+        print(f"❌ Web App Critical Error: {e}")
+        import traceback
+        traceback.print_exc()
+        import sys
+        sys.exit(1)

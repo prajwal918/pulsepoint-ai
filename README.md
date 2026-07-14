@@ -6,8 +6,16 @@ This repository is built with strict enterprise engineering standards, focusing 
 
 ```mermaid
 graph TD
-    A[Client] --> B(Application Container)
-    B --> C{Core Logic}
+    User([User]) -->|Uploads Video| UI{Interface}
+    UI -->|Web| App(app.py / web_app.py)
+    UI -->|Command Line| CLI(cli.py / cli_fast.py / cli_universal.py)
+    App --> Core[Core Processing]
+    CLI --> Core
+    Core -->|Audio Extraction| Librosa[Librosa Peak Detection]
+    Librosa -->|Emotional Peaks| AI[LLM Hook Generation]
+    AI --> VideoProc[MoviePy Video Editor]
+    VideoProc -->|Vertical Crop & Clip| Output[Viral Vertical Reels]
+    Output --> User
 ```
 
 ## 🚀 Setup Instructions
@@ -32,8 +40,16 @@ This repository is built with strict enterprise engineering standards, focusing 
 
 ```mermaid
 graph TD
-    A[Client] --> B(Application Container)
-    B --> C{Core Logic}
+    User([User]) -->|Uploads Video| UI{Interface}
+    UI -->|Web| App(app.py / web_app.py)
+    UI -->|Command Line| CLI(cli.py / cli_fast.py / cli_universal.py)
+    App --> Core[Core Processing]
+    CLI --> Core
+    Core -->|Audio Extraction| Librosa[Librosa Peak Detection]
+    Librosa -->|Emotional Peaks| AI[LLM Hook Generation]
+    AI --> VideoProc[MoviePy Video Editor]
+    VideoProc -->|Vertical Crop & Clip| Output[Viral Vertical Reels]
+    Output --> User
 ```
 
 ## 🚀 Setup Instructions
