@@ -1,3 +1,5 @@
+[![CI](https://github.com/prajwal918/pulsepoint-ai/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/prajwal918/pulsepoint-ai/actions/workflows/ci.yml) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 # pulsepoint-ai
 
 This repository is built with strict enterprise engineering standards, focusing on resilient architecture, graceful error handling, and robust continuous integration.
